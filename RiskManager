@@ -12,3 +12,28 @@ int OnInit()
    // Add initialization code here
    return INIT_SUCCEEDED;
   }
+
+
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+  {
+   // Add tick function code here
+   double lotSize = CalculateLotSize(riskPercentage);
+   double stopLossDistance = 30; // 3 pips in 5-digit broker
+
+   // Check if leverage is exceeded
+   if (AccountLeverage() > maxLeverage) {
+       Print("Exceeded maximum leverage. Trading halted.");
+       return;
+   }
+
+   // Calculate stop loss
+   double stopLossPrice = Ask - stopLossDistance * SymbolInfoDouble(_Symbol, SYMBOL_POINT);
+
+   // Place trade with calculated lot size and stop loss
+   if (!OrderSend(_Symbol, OP_BUY, lotSize, Ask, 3, stopLossPrice, 0, "RiskManagementEA", 0, 0, clrNONE)) {
+       Print("Error sending buy order: ", GetLastError());
+   }
+  }
