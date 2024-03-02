@@ -15,3 +15,10 @@ This Expert Advisor (EA) is designed to manage risk by incorporating automatic s
 5. Adjust the input parameters (`riskPercentage` and `maxLeverage`) according to your trading preferences and broker requirements.
 6. The EA will automatically manage risk by calculating lot size, placing buy orders with stop loss, and ensuring leverage compliance.
 
+
+## Parameters
+
+- `riskPercentage`: The percentage of account balance to risk per trade.
+- `maxLeverage`: The maximum leverage allowed for trading. Trading will be halted if the leverage exceeds this limit.
+
+

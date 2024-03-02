@@ -1,0 +1,14 @@
+#property strict
+
+// Input parameters
+input double riskPercentage = 1.0; // Risk percentage per trade
+input int maxLeverage = 50; // Maximum leverage allowed
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+  {
+   // Add initialization code here
+   return INIT_SUCCEEDED;
+  }
