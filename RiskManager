@@ -69,3 +69,17 @@ void OnTick()
        Print("Error sending buy order: ", GetLastError());
    }
   }
+
+//+------------------------------------------------------------------+
+//| Function to calculate lot size based on risk percentage          |
+//+------------------------------------------------------------------+
+double CalculateLotSize(double riskPercentage)
+  {
+   double lotSize;
+   double accountBalance = AccountBalance();
+   double riskAmount = accountBalance * riskPercentage / 100.0;
+   double stopLoss = 30; // 3 pips in 5-digit broker
+
+   lotSize = riskAmount / (stopLoss * SymbolInfoDouble(_Symbol, SYMBOL_TRADE_TICK_SIZE));
+   return lotSize;
+  }
